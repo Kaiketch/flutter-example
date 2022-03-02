@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_example/ui/component/loading_view.dart';
 import 'package:flutter_example/ui/event/event_list_viewmodel.dart';
-import 'package:flutter_example/ui/history/history_viewmodel.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -16,13 +15,10 @@ class EventListPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final eventListViewModel = ref.read(eventListStateProvider.notifier);
     final eventListState = ref.watch(eventListStateProvider);
-    final historyViewModel = ref.read(historyStateProvider.notifier);
 
     useEffect(() {
       Future(() {
         eventListViewModel.getEvents(_keyword);
-        // historyを更新するため。もっと良い方法ありそう
-        historyViewModel.setShouldReload(true);
       });
       return null;
     }, const []);
