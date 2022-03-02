@@ -9,6 +9,5 @@ class HistoryState with _$HistoryState {
     @Default(false) bool isLoading,
     Exception? exception,
     List<Keyword>? keywordList,
-    @Default(false) bool shouldReload,
   }) = _HistoryState;
 }

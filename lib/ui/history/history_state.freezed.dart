@@ -20,13 +20,11 @@ class _$HistoryStateTearOff {
   _HistoryState call(
       {bool isLoading = false,
       Exception? exception,
-      List<Keyword>? keywordList,
-      bool shouldReload = false}) {
+      List<Keyword>? keywordList}) {
     return _HistoryState(
       isLoading: isLoading,
       exception: exception,
       keywordList: keywordList,
-      shouldReload: shouldReload,
     );
   }
 }
@@ -39,7 +37,6 @@ mixin _$HistoryState {
   bool get isLoading => throw _privateConstructorUsedError;
   Exception? get exception => throw _privateConstructorUsedError;
   List<Keyword>? get keywordList => throw _privateConstructorUsedError;
-  bool get shouldReload => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HistoryStateCopyWith<HistoryState> get copyWith =>
@@ -51,11 +48,7 @@ abstract class $HistoryStateCopyWith<$Res> {
   factory $HistoryStateCopyWith(
           HistoryState value, $Res Function(HistoryState) then) =
       _$HistoryStateCopyWithImpl<$Res>;
-  $Res call(
-      {bool isLoading,
-      Exception? exception,
-      List<Keyword>? keywordList,
-      bool shouldReload});
+  $Res call({bool isLoading, Exception? exception, List<Keyword>? keywordList});
 }
 
 /// @nodoc
@@ -71,7 +64,6 @@ class _$HistoryStateCopyWithImpl<$Res> implements $HistoryStateCopyWith<$Res> {
     Object? isLoading = freezed,
     Object? exception = freezed,
     Object? keywordList = freezed,
-    Object? shouldReload = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed
@@ -86,10 +78,6 @@ class _$HistoryStateCopyWithImpl<$Res> implements $HistoryStateCopyWith<$Res> {
           ? _value.keywordList
           : keywordList // ignore: cast_nullable_to_non_nullable
               as List<Keyword>?,
-      shouldReload: shouldReload == freezed
-          ? _value.shouldReload
-          : shouldReload // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -101,11 +89,7 @@ abstract class _$HistoryStateCopyWith<$Res>
           _HistoryState value, $Res Function(_HistoryState) then) =
       __$HistoryStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {bool isLoading,
-      Exception? exception,
-      List<Keyword>? keywordList,
-      bool shouldReload});
+  $Res call({bool isLoading, Exception? exception, List<Keyword>? keywordList});
 }
 
 /// @nodoc
@@ -123,7 +107,6 @@ class __$HistoryStateCopyWithImpl<$Res> extends _$HistoryStateCopyWithImpl<$Res>
     Object? isLoading = freezed,
     Object? exception = freezed,
     Object? keywordList = freezed,
-    Object? shouldReload = freezed,
   }) {
     return _then(_HistoryState(
       isLoading: isLoading == freezed
@@ -138,10 +121,6 @@ class __$HistoryStateCopyWithImpl<$Res> extends _$HistoryStateCopyWithImpl<$Res>
           ? _value.keywordList
           : keywordList // ignore: cast_nullable_to_non_nullable
               as List<Keyword>?,
-      shouldReload: shouldReload == freezed
-          ? _value.shouldReload
-          : shouldReload // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -149,11 +128,7 @@ class __$HistoryStateCopyWithImpl<$Res> extends _$HistoryStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_HistoryState implements _HistoryState {
-  _$_HistoryState(
-      {this.isLoading = false,
-      this.exception,
-      this.keywordList,
-      this.shouldReload = false});
+  _$_HistoryState({this.isLoading = false, this.exception, this.keywordList});
 
   @JsonKey(defaultValue: false)
   @override
@@ -162,13 +137,10 @@ class _$_HistoryState implements _HistoryState {
   final Exception? exception;
   @override
   final List<Keyword>? keywordList;
-  @JsonKey(defaultValue: false)
-  @override
-  final bool shouldReload;
 
   @override
   String toString() {
-    return 'HistoryState(isLoading: $isLoading, exception: $exception, keywordList: $keywordList, shouldReload: $shouldReload)';
+    return 'HistoryState(isLoading: $isLoading, exception: $exception, keywordList: $keywordList)';
   }
 
   @override
@@ -181,14 +153,12 @@ class _$_HistoryState implements _HistoryState {
             (identical(other.exception, exception) ||
                 other.exception == exception) &&
             const DeepCollectionEquality()
-                .equals(other.keywordList, keywordList) &&
-            (identical(other.shouldReload, shouldReload) ||
-                other.shouldReload == shouldReload));
+                .equals(other.keywordList, keywordList));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, isLoading, exception,
-      const DeepCollectionEquality().hash(keywordList), shouldReload);
+      const DeepCollectionEquality().hash(keywordList));
 
   @JsonKey(ignore: true)
   @override
@@ -200,8 +170,7 @@ abstract class _HistoryState implements HistoryState {
   factory _HistoryState(
       {bool isLoading,
       Exception? exception,
-      List<Keyword>? keywordList,
-      bool shouldReload}) = _$_HistoryState;
+      List<Keyword>? keywordList}) = _$_HistoryState;
 
   @override
   bool get isLoading;
@@ -209,8 +178,6 @@ abstract class _HistoryState implements HistoryState {
   Exception? get exception;
   @override
   List<Keyword>? get keywordList;
-  @override
-  bool get shouldReload;
   @override
   @JsonKey(ignore: true)
   _$HistoryStateCopyWith<_HistoryState> get copyWith =>

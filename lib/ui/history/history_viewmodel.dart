@@ -13,7 +13,7 @@ class HistoryViewModel extends StateNotifier<HistoryState> {
   final KeywordRepository _keywordRepository;
 
   Future<void> getKeywords() async {
-    state = state.copyWith(isLoading: true, shouldReload: false);
+    state = state.copyWith(isLoading: true);
     _keywordRepository
         .getKeywords()
         .catchError((e) {
@@ -23,9 +23,5 @@ class HistoryViewModel extends StateNotifier<HistoryState> {
         .whenComplete(() {
           state = state.copyWith(isLoading: false);
         });
-  }
-
-  Future<void> setShouldReload(bool shouldReload) async {
-    state = state.copyWith(shouldReload: shouldReload);
   }
 }
