@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_example/ui/component/loading_view.dart';
+import 'package:flutter_example/ui/event/event_list_viewmodel.dart';
 import 'package:flutter_example/ui/history/history_viewmodel.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -12,8 +13,8 @@ class HistoryPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final historyViewModel = ref.read(historyStateProvider.notifier);
     final historyState = ref.watch(historyStateProvider);
-    final shouldReload =
-        ref.watch(historyStateProvider.select((value) => value.shouldReload));
+    final searchedKeyword =
+        ref.watch(eventListStateProvider.select((value) => value.keyword));
 
     useEffect(() {
       Future(() {
@@ -21,7 +22,7 @@ class HistoryPage extends HookConsumerWidget {
       });
       return null;
       // 初期表示またはリロードフラグが立っている場合に発火させる
-    }, [shouldReload]);
+    }, [searchedKeyword]);
 
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     final exception = historyState.exception;

@@ -8,6 +8,7 @@ class EventListState with _$EventListState {
   factory EventListState({
     @Default(false) bool isLoading,
     Exception? exception,
+    String? keyword,
     EventResult? eventResult,
   }) = _EventListState;
 }

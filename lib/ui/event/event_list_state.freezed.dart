@@ -20,10 +20,12 @@ class _$EventListStateTearOff {
   _EventListState call(
       {bool isLoading = false,
       Exception? exception,
+      String? keyword,
       EventResult? eventResult}) {
     return _EventListState(
       isLoading: isLoading,
       exception: exception,
+      keyword: keyword,
       eventResult: eventResult,
     );
   }
@@ -36,6 +38,7 @@ const $EventListState = _$EventListStateTearOff();
 mixin _$EventListState {
   bool get isLoading => throw _privateConstructorUsedError;
   Exception? get exception => throw _privateConstructorUsedError;
+  String? get keyword => throw _privateConstructorUsedError;
   EventResult? get eventResult => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -48,7 +51,11 @@ abstract class $EventListStateCopyWith<$Res> {
   factory $EventListStateCopyWith(
           EventListState value, $Res Function(EventListState) then) =
       _$EventListStateCopyWithImpl<$Res>;
-  $Res call({bool isLoading, Exception? exception, EventResult? eventResult});
+  $Res call(
+      {bool isLoading,
+      Exception? exception,
+      String? keyword,
+      EventResult? eventResult});
 
   $EventResultCopyWith<$Res>? get eventResult;
 }
@@ -66,6 +73,7 @@ class _$EventListStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? exception = freezed,
+    Object? keyword = freezed,
     Object? eventResult = freezed,
   }) {
     return _then(_value.copyWith(
@@ -77,6 +85,10 @@ class _$EventListStateCopyWithImpl<$Res>
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
               as Exception?,
+      keyword: keyword == freezed
+          ? _value.keyword
+          : keyword // ignore: cast_nullable_to_non_nullable
+              as String?,
       eventResult: eventResult == freezed
           ? _value.eventResult
           : eventResult // ignore: cast_nullable_to_non_nullable
@@ -103,7 +115,11 @@ abstract class _$EventListStateCopyWith<$Res>
           _EventListState value, $Res Function(_EventListState) then) =
       __$EventListStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isLoading, Exception? exception, EventResult? eventResult});
+  $Res call(
+      {bool isLoading,
+      Exception? exception,
+      String? keyword,
+      EventResult? eventResult});
 
   @override
   $EventResultCopyWith<$Res>? get eventResult;
@@ -124,6 +140,7 @@ class __$EventListStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? exception = freezed,
+    Object? keyword = freezed,
     Object? eventResult = freezed,
   }) {
     return _then(_EventListState(
@@ -135,6 +152,10 @@ class __$EventListStateCopyWithImpl<$Res>
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
               as Exception?,
+      keyword: keyword == freezed
+          ? _value.keyword
+          : keyword // ignore: cast_nullable_to_non_nullable
+              as String?,
       eventResult: eventResult == freezed
           ? _value.eventResult
           : eventResult // ignore: cast_nullable_to_non_nullable
@@ -146,7 +167,8 @@ class __$EventListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_EventListState implements _EventListState {
-  _$_EventListState({this.isLoading = false, this.exception, this.eventResult});
+  _$_EventListState(
+      {this.isLoading = false, this.exception, this.keyword, this.eventResult});
 
   @JsonKey(defaultValue: false)
   @override
@@ -154,11 +176,13 @@ class _$_EventListState implements _EventListState {
   @override
   final Exception? exception;
   @override
+  final String? keyword;
+  @override
   final EventResult? eventResult;
 
   @override
   String toString() {
-    return 'EventListState(isLoading: $isLoading, exception: $exception, eventResult: $eventResult)';
+    return 'EventListState(isLoading: $isLoading, exception: $exception, keyword: $keyword, eventResult: $eventResult)';
   }
 
   @override
@@ -170,13 +194,14 @@ class _$_EventListState implements _EventListState {
                 other.isLoading == isLoading) &&
             (identical(other.exception, exception) ||
                 other.exception == exception) &&
+            (identical(other.keyword, keyword) || other.keyword == keyword) &&
             (identical(other.eventResult, eventResult) ||
                 other.eventResult == eventResult));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, isLoading, exception, eventResult);
+      Object.hash(runtimeType, isLoading, exception, keyword, eventResult);
 
   @JsonKey(ignore: true)
   @override
@@ -188,12 +213,15 @@ abstract class _EventListState implements EventListState {
   factory _EventListState(
       {bool isLoading,
       Exception? exception,
+      String? keyword,
       EventResult? eventResult}) = _$_EventListState;
 
   @override
   bool get isLoading;
   @override
   Exception? get exception;
+  @override
+  String? get keyword;
   @override
   EventResult? get eventResult;
   @override

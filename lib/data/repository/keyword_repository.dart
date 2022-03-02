@@ -10,7 +10,7 @@ class KeywordRepository {
 
   final KeywordDao _keywordDao;
 
-  Future<void> setKeyword(String keyword) {
+  Future<void> storeKeyword(String keyword) {
     return _keywordDao.insertKeyword(Keyword(keyword));
   }
 

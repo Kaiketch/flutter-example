@@ -19,8 +19,8 @@ class EventListViewModel extends StateNotifier<EventListState> {
   final KeywordRepository _keywordRepository;
 
   Future<void> getEvents(String keyword) async {
-    state = state.copyWith(isLoading: true);
-    _keywordRepository.setKeyword(keyword);
+    state = state.copyWith(isLoading: true, keyword: keyword);
+    _keywordRepository.storeKeyword(keyword);
 
     _eventRepository
         .getEvents(keyword)
