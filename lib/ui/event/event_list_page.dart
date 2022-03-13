@@ -20,7 +20,7 @@ class EventListPage extends HookConsumerWidget {
       Future(() {
         eventListViewModel.onUpdateEventList(_keyword);
       });
-      return eventListViewModel.dispose;
+      return null;
     }, const []);
 
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
