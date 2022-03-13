@@ -18,16 +18,16 @@ class EventListPage extends HookConsumerWidget {
 
     useEffect(() {
       Future(() {
-        eventListViewModel.getEvents(_keyword);
+        eventListViewModel.onUpdateEventList(_keyword);
       });
-      return null;
+      return eventListViewModel.dispose;
     }, const []);
 
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     final exception = eventListState.exception;
     if (exception != null) {
       Future(() {
-        const snackBar = SnackBar(content: Text('エラーが発生しました'));
+        const snackBar = SnackBar(content: Text('エラー'));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       });
     }
@@ -47,8 +47,7 @@ class EventListPage extends HookConsumerWidget {
           : ListView.builder(
               itemCount: result?.results_returned ?? 0,
               itemBuilder: (context, index) {
-                return ListTile(
-                    title: Text("tile ${result?.events[index].title}"));
+                return ListTile(title: Text("${result?.events[index].title}"));
               },
             ),
     );

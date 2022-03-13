@@ -12,7 +12,7 @@ class HistoryViewModel extends StateNotifier<HistoryState> {
 
   final KeywordRepository _keywordRepository;
 
-  Future<void> getKeywords() async {
+  Future<void> onUpdateHistory() async {
     state = state.copyWith(isLoading: true);
     _keywordRepository
         .getKeywords()

@@ -18,18 +18,17 @@ class HistoryPage extends HookConsumerWidget {
 
     useEffect(() {
       Future(() {
-        historyViewModel.getKeywords();
+        historyViewModel.onUpdateHistory();
       });
-      return null;
-      // 初期表示またはリロードフラグが立っている場合に発火させる
+      return historyViewModel.dispose;
+      // 初期表示またはキーワド検索が行われた場合に発火させる
     }, [searchedKeyword]);
 
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     final exception = historyState.exception;
     if (exception != null) {
       Future(() {
-        debugPrint("exception ${exception.toString()}");
-        const snackBar = SnackBar(content: Text('エラーが発生しました'));
+        const snackBar = SnackBar(content: Text('エラー'));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       });
     }
@@ -40,8 +39,8 @@ class HistoryPage extends HookConsumerWidget {
             itemCount: historyState.keywordList?.length ?? 0,
             itemBuilder: (context, index) {
               return ListTile(
-                  title:
-                      Text("tile ${historyState.keywordList?[index].keyword}"));
-            });
+                  title: Text("${historyState.keywordList?[index].keyword}"));
+            },
+          );
   }
 }

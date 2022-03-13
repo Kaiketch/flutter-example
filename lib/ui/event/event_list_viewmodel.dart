@@ -18,26 +18,22 @@ class EventListViewModel extends StateNotifier<EventListState> {
   final EventRepository _eventRepository;
   final KeywordRepository _keywordRepository;
 
-  Future<void> getEvents(String keyword) async {
+  Future<void> onUpdateEventList(String keyword) async {
     state = state.copyWith(isLoading: true, keyword: keyword);
     _keywordRepository.storeKeyword(keyword);
 
     _eventRepository
         .getEvents(keyword)
-        .catchError(
-          (e) {
-            state = state.copyWith(exception: e);
-          },
-        )
+        .catchError((e) {
+          state = state.copyWith(exception: e);
+        })
         .then(
           (value) => {
             state = state.copyWith(eventResult: value),
           },
         )
-        .whenComplete(
-          () {
-            state = state.copyWith(isLoading: false);
-          },
-        );
+        .whenComplete(() {
+          state = state.copyWith(isLoading: false);
+        });
   }
 }

@@ -13,7 +13,7 @@ class MainPage extends StatelessWidget {
         HistoryRoute(),
       ],
       appBarBuilder: (_, tabsRouter) => AppBar(
-        title: Text('title ${tabsRouter.activeIndex}'),
+        title: Text(tabsRouter.current.name),
         centerTitle: true,
       ),
       bottomNavigationBuilder: (context, tabsRouter) {

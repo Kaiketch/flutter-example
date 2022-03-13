@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'event_list_state.dart';
@@ -170,7 +171,7 @@ class _$_EventListState implements _EventListState {
   _$_EventListState(
       {this.isLoading = false, this.exception, this.keyword, this.eventResult});
 
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool isLoading;
   @override
@@ -190,18 +191,20 @@ class _$_EventListState implements _EventListState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _EventListState &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(other.exception, exception) ||
-                other.exception == exception) &&
-            (identical(other.keyword, keyword) || other.keyword == keyword) &&
-            (identical(other.eventResult, eventResult) ||
-                other.eventResult == eventResult));
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.exception, exception) &&
+            const DeepCollectionEquality().equals(other.keyword, keyword) &&
+            const DeepCollectionEquality()
+                .equals(other.eventResult, eventResult));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isLoading, exception, keyword, eventResult);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(exception),
+      const DeepCollectionEquality().hash(keyword),
+      const DeepCollectionEquality().hash(eventResult));
 
   @JsonKey(ignore: true)
   @override

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'history_state.dart';
@@ -130,7 +131,7 @@ class __$HistoryStateCopyWithImpl<$Res> extends _$HistoryStateCopyWithImpl<$Res>
 class _$_HistoryState implements _HistoryState {
   _$_HistoryState({this.isLoading = false, this.exception, this.keywordList});
 
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool isLoading;
   @override
@@ -148,16 +149,17 @@ class _$_HistoryState implements _HistoryState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _HistoryState &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(other.exception, exception) ||
-                other.exception == exception) &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.exception, exception) &&
             const DeepCollectionEquality()
                 .equals(other.keywordList, keywordList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, exception,
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(exception),
       const DeepCollectionEquality().hash(keywordList));
 
   @JsonKey(ignore: true)

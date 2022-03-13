@@ -6,6 +6,8 @@ part of 'event_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
+// ignore_for_file: unnecessary_brace_in_string_interps
+
 class _EventApi implements EventApi {
   _EventApi(this._dio, {this.baseUrl});
 

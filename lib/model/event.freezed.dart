@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'event.dart';
@@ -137,13 +138,15 @@ class _$_Event implements _Event {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Event &&
-            (identical(other.event_id, event_id) ||
-                other.event_id == event_id) &&
-            (identical(other.title, title) || other.title == title));
+            const DeepCollectionEquality().equals(other.event_id, event_id) &&
+            const DeepCollectionEquality().equals(other.title, title));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, event_id, title);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(event_id),
+      const DeepCollectionEquality().hash(title));
 
   @JsonKey(ignore: true)
   @override
