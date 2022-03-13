@@ -2,21 +2,17 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_example/app_router.dart';
+import 'package:flutter_example/ui/search/search_viewmodel.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SearchPage extends StatefulWidget {
+class SearchPage extends HookConsumerWidget {
   const SearchPage({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() {
-    return _SearchPageState();
-  }
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final searchViewModel = ref.read(searchStateProvider.notifier);
+    final searchState = ref.watch(searchStateProvider);
 
-class _SearchPageState extends State<SearchPage> {
-  String _keyword = "";
-
-  @override
-  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -24,7 +20,7 @@ class _SearchPageState extends State<SearchPage> {
           TextField(
             decoration: const InputDecoration(hintText: "keyword"),
             onChanged: (text) {
-              _keyword = text;
+              searchViewModel.onKeywordUpdated(text);
             },
           ),
           Padding(
@@ -32,10 +28,11 @@ class _SearchPageState extends State<SearchPage> {
             child: ElevatedButton(
               child: const Text("Search"),
               onPressed: () => {
-                if (_keyword.isNotEmpty)
+                if (searchState.isNotEmpty)
                   {
+                    searchViewModel.onSearchButtonTapped(),
                     AutoRouter.of(context).push(
-                      EventListRoute(keyword: _keyword),
+                      EventListRoute(keyword: searchState),
                     ),
                   },
               },
