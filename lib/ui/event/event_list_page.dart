@@ -23,14 +23,17 @@ class EventListPage extends HookConsumerWidget {
       return null;
     }, const []);
 
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    final exception = eventListState.exception;
-    if (exception != null) {
-      Future(() {
-        const snackBar = SnackBar(content: Text('エラー'));
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      });
-    }
+    final error = eventListState.appError;
+    useEffect(() {
+      if (error != null) {
+        Future(() {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          final snackBar = SnackBar(content: Text(error.message));
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        });
+      }
+      return null;
+    }, [error]);
 
     final result = eventListState.eventResult;
     return Scaffold(

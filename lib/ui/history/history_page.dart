@@ -15,25 +15,28 @@ class HistoryPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final historyViewModel = ref.read(historyStateProvider.notifier);
     final historyState = ref.watch(historyStateProvider);
-    final eventResult =
-        ref.watch(eventListStateProvider.select((value) => value.eventResult));
 
     useEffect(() {
       Future(() {
-        historyViewModel.onUpdateHistory();
+        if(historyState.shouldLoad) {
+          historyViewModel.onUpdateHistory();
+        }
       });
       return null;
       // 初期表示またはキーワド検索が行われた場合に発火させる
-    }, [eventResult]);
+    }, [historyState.shouldLoad]);
 
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    final exception = historyState.exception;
-    if (exception != null) {
-      Future(() {
-        const snackBar = SnackBar(content: Text('エラー'));
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      });
-    }
+    final error = historyState.appError;
+    useEffect(() {
+      if (error != null) {
+        Future(() {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          final snackBar = SnackBar(content: Text(error.message));
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        });
+      }
+      return null;
+    }, [error]);
 
     return historyState.isLoading
         ? const LoadingView()
