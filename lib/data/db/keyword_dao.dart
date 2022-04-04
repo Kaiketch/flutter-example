@@ -17,7 +17,8 @@ class KeywordDao {
 
   Future<List<Keyword>> selectKeywords() async {
     final db = await _appDb.database;
-    final List<Map<String, dynamic>> mapList = await db.query('keywords');
+    final List<Map<String, dynamic>> mapList =
+        await db.query("keywords", orderBy: "id DESC");
     return List.generate(
       mapList.length,
       (i) {
