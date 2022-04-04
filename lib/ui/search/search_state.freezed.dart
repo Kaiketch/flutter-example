@@ -18,12 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SearchStateTearOff {
   const _$SearchStateTearOff();
 
-  _SearchState call(
-      {String? keyword, bool isLoading = false, AppError? appError}) {
+  _SearchState call({String? keyword}) {
     return _SearchState(
       keyword: keyword,
-      isLoading: isLoading,
-      appError: appError,
     );
   }
 }
@@ -34,8 +31,6 @@ const $SearchState = _$SearchStateTearOff();
 /// @nodoc
 mixin _$SearchState {
   String? get keyword => throw _privateConstructorUsedError;
-  bool get isLoading => throw _privateConstructorUsedError;
-  AppError? get appError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchStateCopyWith<SearchState> get copyWith =>
@@ -47,7 +42,7 @@ abstract class $SearchStateCopyWith<$Res> {
   factory $SearchStateCopyWith(
           SearchState value, $Res Function(SearchState) then) =
       _$SearchStateCopyWithImpl<$Res>;
-  $Res call({String? keyword, bool isLoading, AppError? appError});
+  $Res call({String? keyword});
 }
 
 /// @nodoc
@@ -61,22 +56,12 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
   @override
   $Res call({
     Object? keyword = freezed,
-    Object? isLoading = freezed,
-    Object? appError = freezed,
   }) {
     return _then(_value.copyWith(
       keyword: keyword == freezed
           ? _value.keyword
           : keyword // ignore: cast_nullable_to_non_nullable
               as String?,
-      isLoading: isLoading == freezed
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      appError: appError == freezed
-          ? _value.appError
-          : appError // ignore: cast_nullable_to_non_nullable
-              as AppError?,
     ));
   }
 }
@@ -88,7 +73,7 @@ abstract class _$SearchStateCopyWith<$Res>
           _SearchState value, $Res Function(_SearchState) then) =
       __$SearchStateCopyWithImpl<$Res>;
   @override
-  $Res call({String? keyword, bool isLoading, AppError? appError});
+  $Res call({String? keyword});
 }
 
 /// @nodoc
@@ -104,22 +89,12 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? keyword = freezed,
-    Object? isLoading = freezed,
-    Object? appError = freezed,
   }) {
     return _then(_SearchState(
       keyword: keyword == freezed
           ? _value.keyword
           : keyword // ignore: cast_nullable_to_non_nullable
               as String?,
-      isLoading: isLoading == freezed
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      appError: appError == freezed
-          ? _value.appError
-          : appError // ignore: cast_nullable_to_non_nullable
-              as AppError?,
     ));
   }
 }
@@ -127,19 +102,14 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SearchState implements _SearchState {
-  _$_SearchState({this.keyword, this.isLoading = false, this.appError});
+  _$_SearchState({this.keyword});
 
   @override
   final String? keyword;
-  @JsonKey()
-  @override
-  final bool isLoading;
-  @override
-  final AppError? appError;
 
   @override
   String toString() {
-    return 'SearchState(keyword: $keyword, isLoading: $isLoading, appError: $appError)';
+    return 'SearchState(keyword: $keyword)';
   }
 
   @override
@@ -147,17 +117,12 @@ class _$_SearchState implements _SearchState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _SearchState &&
-            const DeepCollectionEquality().equals(other.keyword, keyword) &&
-            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.appError, appError));
+            const DeepCollectionEquality().equals(other.keyword, keyword));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(keyword),
-      const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(appError));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(keyword));
 
   @JsonKey(ignore: true)
   @override
@@ -166,15 +131,10 @@ class _$_SearchState implements _SearchState {
 }
 
 abstract class _SearchState implements SearchState {
-  factory _SearchState({String? keyword, bool isLoading, AppError? appError}) =
-      _$_SearchState;
+  factory _SearchState({String? keyword}) = _$_SearchState;
 
   @override
   String? get keyword;
-  @override
-  bool get isLoading;
-  @override
-  AppError? get appError;
   @override
   @JsonKey(ignore: true)
   _$SearchStateCopyWith<_SearchState> get copyWith =>
