@@ -12,6 +12,7 @@
 
 import 'package:auto_route/auto_route.dart' as _i5;
 import 'package:flutter/material.dart' as _i6;
+import 'package:flutter/src/widgets/framework.dart' as _i7;
 import 'package:flutter_example/ui/event/event_list_page.dart' as _i2;
 import 'package:flutter_example/ui/history/history_page.dart' as _i4;
 import 'package:flutter_example/ui/main_page.dart' as _i1;
@@ -67,7 +68,7 @@ class MainRoute extends _i5.PageRouteInfo<void> {
 /// generated route for
 /// [_i2.EventListPage]
 class EventListRoute extends _i5.PageRouteInfo<EventListRouteArgs> {
-  EventListRoute({required String keyword, _i6.Key? key})
+  EventListRoute({required String keyword, _i7.Key? key})
       : super(EventListRoute.name,
             path: '/event_list',
             args: EventListRouteArgs(keyword: keyword, key: key));
@@ -80,7 +81,7 @@ class EventListRouteArgs {
 
   final String keyword;
 
-  final _i6.Key? key;
+  final _i7.Key? key;
 
   @override
   String toString() {
