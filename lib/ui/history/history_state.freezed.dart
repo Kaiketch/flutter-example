@@ -20,12 +20,14 @@ class _$HistoryStateTearOff {
 
   _HistoryState call(
       {bool isLoading = false,
-      Exception? exception,
-      List<Keyword>? keywordList}) {
+      bool shouldLoad = true,
+      List<Keyword>? keywordList,
+      AppError? appError}) {
     return _HistoryState(
       isLoading: isLoading,
-      exception: exception,
+      shouldLoad: shouldLoad,
       keywordList: keywordList,
+      appError: appError,
     );
   }
 }
@@ -36,8 +38,9 @@ const $HistoryState = _$HistoryStateTearOff();
 /// @nodoc
 mixin _$HistoryState {
   bool get isLoading => throw _privateConstructorUsedError;
-  Exception? get exception => throw _privateConstructorUsedError;
+  bool get shouldLoad => throw _privateConstructorUsedError;
   List<Keyword>? get keywordList => throw _privateConstructorUsedError;
+  AppError? get appError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HistoryStateCopyWith<HistoryState> get copyWith =>
@@ -49,7 +52,11 @@ abstract class $HistoryStateCopyWith<$Res> {
   factory $HistoryStateCopyWith(
           HistoryState value, $Res Function(HistoryState) then) =
       _$HistoryStateCopyWithImpl<$Res>;
-  $Res call({bool isLoading, Exception? exception, List<Keyword>? keywordList});
+  $Res call(
+      {bool isLoading,
+      bool shouldLoad,
+      List<Keyword>? keywordList,
+      AppError? appError});
 }
 
 /// @nodoc
@@ -63,22 +70,27 @@ class _$HistoryStateCopyWithImpl<$Res> implements $HistoryStateCopyWith<$Res> {
   @override
   $Res call({
     Object? isLoading = freezed,
-    Object? exception = freezed,
+    Object? shouldLoad = freezed,
     Object? keywordList = freezed,
+    Object? appError = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      exception: exception == freezed
-          ? _value.exception
-          : exception // ignore: cast_nullable_to_non_nullable
-              as Exception?,
+      shouldLoad: shouldLoad == freezed
+          ? _value.shouldLoad
+          : shouldLoad // ignore: cast_nullable_to_non_nullable
+              as bool,
       keywordList: keywordList == freezed
           ? _value.keywordList
           : keywordList // ignore: cast_nullable_to_non_nullable
               as List<Keyword>?,
+      appError: appError == freezed
+          ? _value.appError
+          : appError // ignore: cast_nullable_to_non_nullable
+              as AppError?,
     ));
   }
 }
@@ -90,7 +102,11 @@ abstract class _$HistoryStateCopyWith<$Res>
           _HistoryState value, $Res Function(_HistoryState) then) =
       __$HistoryStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isLoading, Exception? exception, List<Keyword>? keywordList});
+  $Res call(
+      {bool isLoading,
+      bool shouldLoad,
+      List<Keyword>? keywordList,
+      AppError? appError});
 }
 
 /// @nodoc
@@ -106,22 +122,27 @@ class __$HistoryStateCopyWithImpl<$Res> extends _$HistoryStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
-    Object? exception = freezed,
+    Object? shouldLoad = freezed,
     Object? keywordList = freezed,
+    Object? appError = freezed,
   }) {
     return _then(_HistoryState(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      exception: exception == freezed
-          ? _value.exception
-          : exception // ignore: cast_nullable_to_non_nullable
-              as Exception?,
+      shouldLoad: shouldLoad == freezed
+          ? _value.shouldLoad
+          : shouldLoad // ignore: cast_nullable_to_non_nullable
+              as bool,
       keywordList: keywordList == freezed
           ? _value.keywordList
           : keywordList // ignore: cast_nullable_to_non_nullable
               as List<Keyword>?,
+      appError: appError == freezed
+          ? _value.appError
+          : appError // ignore: cast_nullable_to_non_nullable
+              as AppError?,
     ));
   }
 }
@@ -129,19 +150,26 @@ class __$HistoryStateCopyWithImpl<$Res> extends _$HistoryStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_HistoryState implements _HistoryState {
-  _$_HistoryState({this.isLoading = false, this.exception, this.keywordList});
+  _$_HistoryState(
+      {this.isLoading = false,
+      this.shouldLoad = true,
+      this.keywordList,
+      this.appError});
 
   @JsonKey()
   @override
   final bool isLoading;
+  @JsonKey()
   @override
-  final Exception? exception;
+  final bool shouldLoad;
   @override
   final List<Keyword>? keywordList;
+  @override
+  final AppError? appError;
 
   @override
   String toString() {
-    return 'HistoryState(isLoading: $isLoading, exception: $exception, keywordList: $keywordList)';
+    return 'HistoryState(isLoading: $isLoading, shouldLoad: $shouldLoad, keywordList: $keywordList, appError: $appError)';
   }
 
   @override
@@ -150,17 +178,20 @@ class _$_HistoryState implements _HistoryState {
         (other.runtimeType == runtimeType &&
             other is _HistoryState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.exception, exception) &&
             const DeepCollectionEquality()
-                .equals(other.keywordList, keywordList));
+                .equals(other.shouldLoad, shouldLoad) &&
+            const DeepCollectionEquality()
+                .equals(other.keywordList, keywordList) &&
+            const DeepCollectionEquality().equals(other.appError, appError));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(exception),
-      const DeepCollectionEquality().hash(keywordList));
+      const DeepCollectionEquality().hash(shouldLoad),
+      const DeepCollectionEquality().hash(keywordList),
+      const DeepCollectionEquality().hash(appError));
 
   @JsonKey(ignore: true)
   @override
@@ -171,15 +202,18 @@ class _$_HistoryState implements _HistoryState {
 abstract class _HistoryState implements HistoryState {
   factory _HistoryState(
       {bool isLoading,
-      Exception? exception,
-      List<Keyword>? keywordList}) = _$_HistoryState;
+      bool shouldLoad,
+      List<Keyword>? keywordList,
+      AppError? appError}) = _$_HistoryState;
 
   @override
   bool get isLoading;
   @override
-  Exception? get exception;
+  bool get shouldLoad;
   @override
   List<Keyword>? get keywordList;
+  @override
+  AppError? get appError;
   @override
   @JsonKey(ignore: true)
   _$HistoryStateCopyWith<_HistoryState> get copyWith =>

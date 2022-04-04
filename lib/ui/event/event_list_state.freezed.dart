@@ -19,15 +19,11 @@ class _$EventListStateTearOff {
   const _$EventListStateTearOff();
 
   _EventListState call(
-      {bool isLoading = false,
-      Exception? exception,
-      String? keyword,
-      EventResult? eventResult}) {
+      {bool isLoading = false, EventResult? eventResult, AppError? appError}) {
     return _EventListState(
       isLoading: isLoading,
-      exception: exception,
-      keyword: keyword,
       eventResult: eventResult,
+      appError: appError,
     );
   }
 }
@@ -38,9 +34,8 @@ const $EventListState = _$EventListStateTearOff();
 /// @nodoc
 mixin _$EventListState {
   bool get isLoading => throw _privateConstructorUsedError;
-  Exception? get exception => throw _privateConstructorUsedError;
-  String? get keyword => throw _privateConstructorUsedError;
   EventResult? get eventResult => throw _privateConstructorUsedError;
+  AppError? get appError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventListStateCopyWith<EventListState> get copyWith =>
@@ -52,11 +47,7 @@ abstract class $EventListStateCopyWith<$Res> {
   factory $EventListStateCopyWith(
           EventListState value, $Res Function(EventListState) then) =
       _$EventListStateCopyWithImpl<$Res>;
-  $Res call(
-      {bool isLoading,
-      Exception? exception,
-      String? keyword,
-      EventResult? eventResult});
+  $Res call({bool isLoading, EventResult? eventResult, AppError? appError});
 
   $EventResultCopyWith<$Res>? get eventResult;
 }
@@ -73,27 +64,22 @@ class _$EventListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
-    Object? exception = freezed,
-    Object? keyword = freezed,
     Object? eventResult = freezed,
+    Object? appError = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      exception: exception == freezed
-          ? _value.exception
-          : exception // ignore: cast_nullable_to_non_nullable
-              as Exception?,
-      keyword: keyword == freezed
-          ? _value.keyword
-          : keyword // ignore: cast_nullable_to_non_nullable
-              as String?,
       eventResult: eventResult == freezed
           ? _value.eventResult
           : eventResult // ignore: cast_nullable_to_non_nullable
               as EventResult?,
+      appError: appError == freezed
+          ? _value.appError
+          : appError // ignore: cast_nullable_to_non_nullable
+              as AppError?,
     ));
   }
 
@@ -116,11 +102,7 @@ abstract class _$EventListStateCopyWith<$Res>
           _EventListState value, $Res Function(_EventListState) then) =
       __$EventListStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {bool isLoading,
-      Exception? exception,
-      String? keyword,
-      EventResult? eventResult});
+  $Res call({bool isLoading, EventResult? eventResult, AppError? appError});
 
   @override
   $EventResultCopyWith<$Res>? get eventResult;
@@ -140,27 +122,22 @@ class __$EventListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
-    Object? exception = freezed,
-    Object? keyword = freezed,
     Object? eventResult = freezed,
+    Object? appError = freezed,
   }) {
     return _then(_EventListState(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      exception: exception == freezed
-          ? _value.exception
-          : exception // ignore: cast_nullable_to_non_nullable
-              as Exception?,
-      keyword: keyword == freezed
-          ? _value.keyword
-          : keyword // ignore: cast_nullable_to_non_nullable
-              as String?,
       eventResult: eventResult == freezed
           ? _value.eventResult
           : eventResult // ignore: cast_nullable_to_non_nullable
               as EventResult?,
+      appError: appError == freezed
+          ? _value.appError
+          : appError // ignore: cast_nullable_to_non_nullable
+              as AppError?,
     ));
   }
 }
@@ -168,22 +145,19 @@ class __$EventListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_EventListState implements _EventListState {
-  _$_EventListState(
-      {this.isLoading = false, this.exception, this.keyword, this.eventResult});
+  _$_EventListState({this.isLoading = false, this.eventResult, this.appError});
 
   @JsonKey()
   @override
   final bool isLoading;
   @override
-  final Exception? exception;
-  @override
-  final String? keyword;
-  @override
   final EventResult? eventResult;
+  @override
+  final AppError? appError;
 
   @override
   String toString() {
-    return 'EventListState(isLoading: $isLoading, exception: $exception, keyword: $keyword, eventResult: $eventResult)';
+    return 'EventListState(isLoading: $isLoading, eventResult: $eventResult, appError: $appError)';
   }
 
   @override
@@ -192,19 +166,17 @@ class _$_EventListState implements _EventListState {
         (other.runtimeType == runtimeType &&
             other is _EventListState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.exception, exception) &&
-            const DeepCollectionEquality().equals(other.keyword, keyword) &&
             const DeepCollectionEquality()
-                .equals(other.eventResult, eventResult));
+                .equals(other.eventResult, eventResult) &&
+            const DeepCollectionEquality().equals(other.appError, appError));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(exception),
-      const DeepCollectionEquality().hash(keyword),
-      const DeepCollectionEquality().hash(eventResult));
+      const DeepCollectionEquality().hash(eventResult),
+      const DeepCollectionEquality().hash(appError));
 
   @JsonKey(ignore: true)
   @override
@@ -215,18 +187,15 @@ class _$_EventListState implements _EventListState {
 abstract class _EventListState implements EventListState {
   factory _EventListState(
       {bool isLoading,
-      Exception? exception,
-      String? keyword,
-      EventResult? eventResult}) = _$_EventListState;
+      EventResult? eventResult,
+      AppError? appError}) = _$_EventListState;
 
   @override
   bool get isLoading;
   @override
-  Exception? get exception;
-  @override
-  String? get keyword;
-  @override
   EventResult? get eventResult;
+  @override
+  AppError? get appError;
   @override
   @JsonKey(ignore: true)
   _$EventListStateCopyWith<_EventListState> get copyWith =>
