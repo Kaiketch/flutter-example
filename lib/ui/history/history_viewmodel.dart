@@ -13,8 +13,17 @@ class HistoryViewModel extends StateNotifier<HistoryState> {
 
   final KeywordRepository _keywordRepository;
 
-  void onBet() {
-    state = state.copyWith(shouldLoad: true);
+  Future<void> onSearchButtonTapped(String keyword) async {
+    state = state.copyWith(isLoading: true);
+    _keywordRepository.storeKeyword(keyword).catchError(
+      (e) {
+        state = state.copyWith(appError: AppError.from(e));
+      },
+    ).whenComplete(
+      () {
+        state = state.copyWith(isLoading: false, shouldLoad: true);
+      },
+    );
   }
 
   Future<void> onUpdateHistory() async {
@@ -22,7 +31,8 @@ class HistoryViewModel extends StateNotifier<HistoryState> {
     _keywordRepository
         .getKeywords()
         .then(
-          (value) => state = state.copyWith(keywordList: value, shouldLoad: false),
+          (value) =>
+              state = state.copyWith(keywordList: value, shouldLoad: false),
         )
         .catchError(
       (e) {
