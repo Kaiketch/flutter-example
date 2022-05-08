@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'event_list_state.dart';
+part of 'event_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,12 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$EventListStateTearOff {
-  const _$EventListStateTearOff();
+class _$EventStateTearOff {
+  const _$EventStateTearOff();
 
-  _EventListState call(
+  _EventState call(
       {bool isLoading = false, EventResult? eventResult, AppError? appError}) {
-    return _EventListState(
+    return _EventState(
       isLoading: isLoading,
       eventResult: eventResult,
       appError: appError,
@@ -29,37 +29,36 @@ class _$EventListStateTearOff {
 }
 
 /// @nodoc
-const $EventListState = _$EventListStateTearOff();
+const $EventState = _$EventStateTearOff();
 
 /// @nodoc
-mixin _$EventListState {
+mixin _$EventState {
   bool get isLoading => throw _privateConstructorUsedError;
   EventResult? get eventResult => throw _privateConstructorUsedError;
   AppError? get appError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EventListStateCopyWith<EventListState> get copyWith =>
+  $EventStateCopyWith<EventState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EventListStateCopyWith<$Res> {
-  factory $EventListStateCopyWith(
-          EventListState value, $Res Function(EventListState) then) =
-      _$EventListStateCopyWithImpl<$Res>;
+abstract class $EventStateCopyWith<$Res> {
+  factory $EventStateCopyWith(
+          EventState value, $Res Function(EventState) then) =
+      _$EventStateCopyWithImpl<$Res>;
   $Res call({bool isLoading, EventResult? eventResult, AppError? appError});
 
   $EventResultCopyWith<$Res>? get eventResult;
 }
 
 /// @nodoc
-class _$EventListStateCopyWithImpl<$Res>
-    implements $EventListStateCopyWith<$Res> {
-  _$EventListStateCopyWithImpl(this._value, this._then);
+class _$EventStateCopyWithImpl<$Res> implements $EventStateCopyWith<$Res> {
+  _$EventStateCopyWithImpl(this._value, this._then);
 
-  final EventListState _value;
+  final EventState _value;
   // ignore: unused_field
-  final $Res Function(EventListState) _then;
+  final $Res Function(EventState) _then;
 
   @override
   $Res call({
@@ -96,11 +95,10 @@ class _$EventListStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$EventListStateCopyWith<$Res>
-    implements $EventListStateCopyWith<$Res> {
-  factory _$EventListStateCopyWith(
-          _EventListState value, $Res Function(_EventListState) then) =
-      __$EventListStateCopyWithImpl<$Res>;
+abstract class _$EventStateCopyWith<$Res> implements $EventStateCopyWith<$Res> {
+  factory _$EventStateCopyWith(
+          _EventState value, $Res Function(_EventState) then) =
+      __$EventStateCopyWithImpl<$Res>;
   @override
   $Res call({bool isLoading, EventResult? eventResult, AppError? appError});
 
@@ -109,15 +107,14 @@ abstract class _$EventListStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$EventListStateCopyWithImpl<$Res>
-    extends _$EventListStateCopyWithImpl<$Res>
-    implements _$EventListStateCopyWith<$Res> {
-  __$EventListStateCopyWithImpl(
-      _EventListState _value, $Res Function(_EventListState) _then)
-      : super(_value, (v) => _then(v as _EventListState));
+class __$EventStateCopyWithImpl<$Res> extends _$EventStateCopyWithImpl<$Res>
+    implements _$EventStateCopyWith<$Res> {
+  __$EventStateCopyWithImpl(
+      _EventState _value, $Res Function(_EventState) _then)
+      : super(_value, (v) => _then(v as _EventState));
 
   @override
-  _EventListState get _value => super._value as _EventListState;
+  _EventState get _value => super._value as _EventState;
 
   @override
   $Res call({
@@ -125,7 +122,7 @@ class __$EventListStateCopyWithImpl<$Res>
     Object? eventResult = freezed,
     Object? appError = freezed,
   }) {
-    return _then(_EventListState(
+    return _then(_EventState(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -144,8 +141,8 @@ class __$EventListStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventListState implements _EventListState {
-  _$_EventListState({this.isLoading = false, this.eventResult, this.appError});
+class _$_EventState implements _EventState {
+  _$_EventState({this.isLoading = false, this.eventResult, this.appError});
 
   @JsonKey()
   @override
@@ -157,14 +154,14 @@ class _$_EventListState implements _EventListState {
 
   @override
   String toString() {
-    return 'EventListState(isLoading: $isLoading, eventResult: $eventResult, appError: $appError)';
+    return 'EventState(isLoading: $isLoading, eventResult: $eventResult, appError: $appError)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EventListState &&
+            other is _EventState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
                 .equals(other.eventResult, eventResult) &&
@@ -180,15 +177,15 @@ class _$_EventListState implements _EventListState {
 
   @JsonKey(ignore: true)
   @override
-  _$EventListStateCopyWith<_EventListState> get copyWith =>
-      __$EventListStateCopyWithImpl<_EventListState>(this, _$identity);
+  _$EventStateCopyWith<_EventState> get copyWith =>
+      __$EventStateCopyWithImpl<_EventState>(this, _$identity);
 }
 
-abstract class _EventListState implements EventListState {
-  factory _EventListState(
+abstract class _EventState implements EventState {
+  factory _EventState(
       {bool isLoading,
       EventResult? eventResult,
-      AppError? appError}) = _$_EventListState;
+      AppError? appError}) = _$_EventState;
 
   @override
   bool get isLoading;
@@ -198,6 +195,6 @@ abstract class _EventListState implements EventListState {
   AppError? get appError;
   @override
   @JsonKey(ignore: true)
-  _$EventListStateCopyWith<_EventListState> get copyWith =>
+  _$EventStateCopyWith<_EventState> get copyWith =>
       throw _privateConstructorUsedError;
 }

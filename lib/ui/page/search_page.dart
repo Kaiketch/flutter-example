@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_example/app_router.dart';
-import 'package:flutter_example/ui/component/loading_view.dart';
+import 'package:flutter_example/ui/page/component/loading_view.dart';
 import 'package:flutter_example/ui/keyword/keyword_state_notifier.dart';
 import 'package:flutter_example/ui/search/search_viewmodel.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
