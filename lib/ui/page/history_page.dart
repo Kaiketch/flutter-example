@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_example/app_router.dart';
 import 'package:flutter_example/ui/component/loading_view.dart';
-import 'package:flutter_example/ui/history/history_viewmodel.dart';
+import 'package:flutter_example/ui/keyword/keyword_state_notifier.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -12,17 +12,17 @@ class HistoryPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final historyViewModel = ref.read(historyStateProvider.notifier);
-    final historyState = ref.watch(historyStateProvider);
+    final keywordStateNotifier = ref.read(keywordStateProvider.notifier);
+    final keywordState = ref.watch(keywordStateProvider);
 
     useEffect(() {
       Future(() {
-        historyViewModel.onUpdateHistory();
+        keywordStateNotifier.onUpdateHistory();
       });
       return null;
     }, []);
 
-    final error = historyState.appError;
+    final error = keywordState.appError;
     useEffect(() {
       if (error != null) {
         Future(() {
@@ -34,12 +34,12 @@ class HistoryPage extends HookConsumerWidget {
       return null;
     }, [error]);
 
-    return historyState.isLoading
+    return keywordState.isLoading
         ? const LoadingView()
         : ListView.builder(
-            itemCount: historyState.keywordList?.length ?? 0,
+            itemCount: keywordState.keywordList?.length ?? 0,
             itemBuilder: (context, index) {
-              final keyword = historyState.keywordList?[index].keyword;
+              final keyword = keywordState.keywordList?[index].keyword;
 
               return ListTile(
                 title: Text(keyword ?? ""),

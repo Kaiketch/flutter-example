@@ -1,15 +1,15 @@
 import 'package:flutter_example/data/repository/keyword_repository.dart';
 import 'package:flutter_example/model/app_error.dart';
-import 'package:flutter_example/ui/history/history_state.dart';
+import 'package:flutter_example/ui/keyword/keyword_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final historyStateProvider =
-    StateNotifierProvider.autoDispose<HistoryViewModel, HistoryState>(
-  (ref) => HistoryViewModel(ref.read(keywordRepositoryProvider)),
+final keywordStateProvider =
+    StateNotifierProvider.autoDispose<KeywordStateNotifier, KeywordState>(
+  (ref) => KeywordStateNotifier(ref.read(keywordRepositoryProvider)),
 );
 
-class HistoryViewModel extends StateNotifier<HistoryState> {
-  HistoryViewModel(this._keywordRepository) : super(HistoryState());
+class KeywordStateNotifier extends StateNotifier<KeywordState> {
+  KeywordStateNotifier(this._keywordRepository) : super(KeywordState());
 
   final KeywordRepository _keywordRepository;
 
@@ -32,7 +32,7 @@ class HistoryViewModel extends StateNotifier<HistoryState> {
         .getKeywords()
         .then(
           (value) =>
-              state = state.copyWith(keywordList: value, shouldLoad: false),
+              state = state.copyWith(keywordList: value),
         )
         .catchError(
       (e) {

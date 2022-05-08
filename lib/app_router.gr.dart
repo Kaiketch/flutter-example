@@ -13,8 +13,8 @@
 import 'package:auto_route/auto_route.dart' as _i5;
 import 'package:flutter/material.dart' as _i6;
 import 'package:flutter_example/ui/event/event_list_page.dart' as _i2;
-import 'package:flutter_example/ui/history/history_page.dart' as _i4;
 import 'package:flutter_example/ui/main_page.dart' as _i1;
+import 'package:flutter_example/ui/page/history_page.dart' as _i4;
 import 'package:flutter_example/ui/search/search_page.dart' as _i3;
 
 class AppRouter extends _i5.RootStackRouter {
@@ -49,7 +49,7 @@ class AppRouter extends _i5.RootStackRouter {
           _i5.RouteConfig(SearchRoute.name,
               path: 'search', parent: MainRoute.name),
           _i5.RouteConfig(HistoryRoute.name,
-              path: 'history', parent: MainRoute.name)
+              path: 'keyword', parent: MainRoute.name)
         ]),
         _i5.RouteConfig(EventListRoute.name, path: '/event_list')
       ];
@@ -99,7 +99,7 @@ class SearchRoute extends _i5.PageRouteInfo<void> {
 /// generated route for
 /// [_i4.HistoryPage]
 class HistoryRoute extends _i5.PageRouteInfo<void> {
-  const HistoryRoute() : super(HistoryRoute.name, path: 'history');
+  const HistoryRoute() : super(HistoryRoute.name, path: 'keyword');
 
   static const String name = 'HistoryRoute';
 }
