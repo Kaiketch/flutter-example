@@ -2,22 +2,20 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_example/app_router.dart';
-import 'package:flutter_example/ui/page/component/loading_view.dart';
 import 'package:flutter_example/ui/keyword/keyword_state_notifier.dart';
-import 'package:flutter_example/ui/search/search_viewmodel.dart';
+import 'package:flutter_example/ui/page/component/loading_view.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SearchPage extends HookConsumerWidget {
-  const SearchPage({Key? key}) : super(key: key);
+  SearchPage({Key? key}) : super(key: key);
+
+  // 入力状態はKeywordStateで保持しても良いかもだがViewのただの状態として一旦
+  final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final searchViewModel = ref.read(searchStateProvider.notifier);
-    final searchState = ref.watch(searchStateProvider);
     final keywordStateNotifier = ref.read(keywordStateProvider.notifier);
     final keywordState = ref.watch(keywordStateProvider);
-
-    final String? keyword = searchState.keyword;
 
     return keywordState.isLoading
         ? const LoadingView()
@@ -26,10 +24,8 @@ class SearchPage extends HookConsumerWidget {
             child: Column(
               children: [
                 TextField(
+                  controller: controller,
                   decoration: const InputDecoration(hintText: "keyword"),
-                  onChanged: (text) {
-                    searchViewModel.onKeywordUpdated(text);
-                  },
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16),
@@ -37,12 +33,13 @@ class SearchPage extends HookConsumerWidget {
                     child: const Text("Search"),
                     onPressed: () => {
                       FocusScope.of(context).unfocus(),
-                      if (keyword != null && keyword.isNotEmpty)
+                      if (controller.text.isNotEmpty)
                         {
                           AutoRouter.of(context).push(
-                            EventListRoute(keyword: keyword),
+                            EventListRoute(keyword: controller.text),
                           ),
-                          keywordStateNotifier.onSearchButtonTapped(keyword),
+                          keywordStateNotifier
+                              .saveKeyword(controller.text),
                         },
                     },
                   ),

@@ -34,8 +34,10 @@ class AppRouter extends _i5.RootStackRouter {
           child: _i2.EventListPage(args.keyword, key: args.key));
     },
     SearchRoute.name: (routeData) {
+      final args = routeData.argsAs<SearchRouteArgs>(
+          orElse: () => const SearchRouteArgs());
       return _i5.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i3.SearchPage());
+          routeData: routeData, child: _i3.SearchPage(key: args.key));
     },
     HistoryRoute.name: (routeData) {
       return _i5.AdaptivePage<dynamic>(
@@ -90,10 +92,23 @@ class EventListRouteArgs {
 
 /// generated route for
 /// [_i3.SearchPage]
-class SearchRoute extends _i5.PageRouteInfo<void> {
-  const SearchRoute() : super(SearchRoute.name, path: 'search');
+class SearchRoute extends _i5.PageRouteInfo<SearchRouteArgs> {
+  SearchRoute({_i6.Key? key})
+      : super(SearchRoute.name,
+            path: 'search', args: SearchRouteArgs(key: key));
 
   static const String name = 'SearchRoute';
+}
+
+class SearchRouteArgs {
+  const SearchRouteArgs({this.key});
+
+  final _i6.Key? key;
+
+  @override
+  String toString() {
+    return 'SearchRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

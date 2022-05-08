@@ -8,9 +8,9 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      routes: const [
+      routes: [
         SearchRoute(),
-        HistoryRoute(),
+        const HistoryRoute(),
       ],
       appBarBuilder: (_, tabsRouter) => AppBar(
         title: Text(tabsRouter.current.name),
