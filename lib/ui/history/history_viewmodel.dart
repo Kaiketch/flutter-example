@@ -21,7 +21,7 @@ class HistoryViewModel extends StateNotifier<HistoryState> {
       },
     ).whenComplete(
       () {
-        state = state.copyWith(isLoading: false, shouldLoad: true);
+        onUpdateHistory();
       },
     );
   }

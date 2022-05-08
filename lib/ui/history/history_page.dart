@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_example/app_router.dart';
 import 'package:flutter_example/ui/component/loading_view.dart';
-import 'package:flutter_example/ui/event/event_list_viewmodel.dart';
 import 'package:flutter_example/ui/history/history_viewmodel.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -18,13 +17,10 @@ class HistoryPage extends HookConsumerWidget {
 
     useEffect(() {
       Future(() {
-        if(historyState.shouldLoad) {
-          historyViewModel.onUpdateHistory();
-        }
+        historyViewModel.onUpdateHistory();
       });
       return null;
-      // 初期表示またはキーワド検索が行われた場合に発火させる
-    }, [historyState.shouldLoad]);
+    }, []);
 
     final error = historyState.appError;
     useEffect(() {
