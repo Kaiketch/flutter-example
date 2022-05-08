@@ -21,6 +21,7 @@ class KeywordStateNotifier extends StateNotifier<KeywordState> {
       },
     ).whenComplete(
       () {
+        // リスト頭に挿入でも良き
         fetchKeywords();
       },
     );
