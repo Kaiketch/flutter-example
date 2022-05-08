@@ -10,7 +10,7 @@ class EventRepository {
 
   final EventApi _eventApi;
 
-  Future<EventResult> getEvents(String keyword) {
+  Future<EventResult> fetchEvents(String keyword) {
     return _eventApi.fetchEvents(keyword: keyword);
   }
 }

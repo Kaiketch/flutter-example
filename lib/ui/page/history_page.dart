@@ -17,7 +17,7 @@ class HistoryPage extends HookConsumerWidget {
 
     useEffect(() {
       Future(() {
-        keywordStateNotifier.onUpdateHistory();
+        keywordStateNotifier.fetchKeywords();
       });
       return null;
     }, []);

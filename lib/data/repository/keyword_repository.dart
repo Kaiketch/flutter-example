@@ -14,7 +14,7 @@ class KeywordRepository {
     return _keywordDao.insertKeyword(Keyword(keyword));
   }
 
-  Future<List<Keyword>> getKeywords() {
+  Future<List<Keyword>> fetchKeywords() {
     return _keywordDao.selectKeywords();
   }
 }

@@ -18,7 +18,7 @@ class EventListPage extends HookConsumerWidget {
 
     useEffect(() {
       Future(() {
-        eventStateNotifier.onUpdateEventList(_keyword);
+        eventStateNotifier.fetchEvents(_keyword);
       });
       return null;
     }, const []);

@@ -13,7 +13,7 @@ class KeywordStateNotifier extends StateNotifier<KeywordState> {
 
   final KeywordRepository _keywordRepository;
 
-  Future<void> onSearchButtonTapped(String keyword) async {
+  Future<void> saveKeyword(String keyword) async {
     state = state.copyWith(isLoading: true);
     _keywordRepository.storeKeyword(keyword).catchError(
       (e) {
@@ -21,15 +21,15 @@ class KeywordStateNotifier extends StateNotifier<KeywordState> {
       },
     ).whenComplete(
       () {
-        onUpdateHistory();
+        fetchKeywords();
       },
     );
   }
 
-  Future<void> onUpdateHistory() async {
+  Future<void> fetchKeywords() async {
     state = state.copyWith(isLoading: true);
     _keywordRepository
-        .getKeywords()
+        .fetchKeywords()
         .then(
           (value) =>
               state = state.copyWith(keywordList: value),

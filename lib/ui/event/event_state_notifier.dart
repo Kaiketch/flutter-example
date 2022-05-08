@@ -15,11 +15,11 @@ class EventStateNotifier extends StateNotifier<EventState> {
 
   final EventRepository _eventRepository;
 
-  Future<void> onUpdateEventList(String keyword) async {
+  Future<void> fetchEvents(String keyword) async {
     state = state.copyWith(isLoading: true);
 
     _eventRepository
-        .getEvents(keyword)
+        .fetchEvents(keyword)
         .then(
           (value) => {
             state = state.copyWith(eventResult: value),
